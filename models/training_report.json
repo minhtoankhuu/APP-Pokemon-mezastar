@@ -152,6 +152,303 @@
     "Zamazenta": 15,
     "sylveon": 15
   },
-  "last_train_accuracy": 0.8219178318977356,
-  "last_val_accuracy": 0.8767123222351074
+  "train_samples": 1022,
+  "val_samples": 73,
+  "last_train_accuracy": 0.8405088186264038,
+  "last_val_accuracy": 0.8904109597206116,
+  "per_class_val": {
+    "Arcanine": {
+      "correct": 1,
+      "total": 1
+    },
+    "Blastoise": {
+      "correct": 1,
+      "total": 1
+    },
+    "Charizard": {
+      "correct": 1,
+      "total": 1
+    },
+    "Charjabug": {
+      "correct": 1,
+      "total": 1
+    },
+    "Cinderace_4s": {
+      "correct": 1,
+      "total": 1
+    },
+    "Cinderace_5s": {
+      "correct": 1,
+      "total": 1
+    },
+    "Cramorant": {
+      "correct": 1,
+      "total": 1
+    },
+    "Crocalor": {
+      "correct": 1,
+      "total": 1
+    },
+    "Dedenne": {
+      "correct": 1,
+      "total": 1
+    },
+    "Dodrio": {
+      "correct": 1,
+      "total": 1
+    },
+    "Doduo": {
+      "correct": 1,
+      "total": 1
+    },
+    "Drizzile": {
+      "correct": 0,
+      "total": 1
+    },
+    "Eevee": {
+      "correct": 1,
+      "total": 1
+    },
+    "Eldegoss": {
+      "correct": 1,
+      "total": 1
+    },
+    "Espeon": {
+      "correct": 1,
+      "total": 1
+    },
+    "Flareon": {
+      "correct": 1,
+      "total": 1
+    },
+    "Floragato": {
+      "correct": 1,
+      "total": 1
+    },
+    "Flygon": {
+      "correct": 1,
+      "total": 1
+    },
+    "Frosmoth": {
+      "correct": 1,
+      "total": 1
+    },
+    "Fuecoco": {
+      "correct": 1,
+      "total": 1
+    },
+    "Galarian Linoone": {
+      "correct": 1,
+      "total": 1
+    },
+    "Galarian Zigzagoon": {
+      "correct": 1,
+      "total": 1
+    },
+    "Gengar": {
+      "correct": 1,
+      "total": 1
+    },
+    "Glaceon": {
+      "correct": 1,
+      "total": 1
+    },
+    "Golett": {
+      "correct": 1,
+      "total": 1
+    },
+    "Golurk": {
+      "correct": 1,
+      "total": 1
+    },
+    "Gossifleur": {
+      "correct": 1,
+      "total": 1
+    },
+    "Grookey": {
+      "correct": 0,
+      "total": 1
+    },
+    "Grubbin": {
+      "correct": 1,
+      "total": 1
+    },
+    "Inteleon_4s": {
+      "correct": 1,
+      "total": 1
+    },
+    "Inteleon_5s": {
+      "correct": 0,
+      "total": 1
+    },
+    "Jolteon": {
+      "correct": 1,
+      "total": 1
+    },
+    "Keldeo": {
+      "correct": 1,
+      "total": 1
+    },
+    "Leafeon": {
+      "correct": 1,
+      "total": 1
+    },
+    "Lucario": {
+      "correct": 1,
+      "total": 1
+    },
+    "Metagross": {
+      "correct": 1,
+      "total": 1
+    },
+    "Mew": {
+      "correct": 1,
+      "total": 1
+    },
+    "Mewtwo": {
+      "correct": 1,
+      "total": 1
+    },
+    "Miraidon": {
+      "correct": 1,
+      "total": 1
+    },
+    "Mudbray": {
+      "correct": 1,
+      "total": 1
+    },
+    "Mudsdale": {
+      "correct": 1,
+      "total": 1
+    },
+    "Obstagoon_4s": {
+      "correct": 1,
+      "total": 1
+    },
+    "Obstagoon_5s": {
+      "correct": 0,
+      "total": 1
+    },
+    "Pidgeot": {
+      "correct": 1,
+      "total": 1
+    },
+    "Pikachu-Star": {
+      "correct": 0,
+      "total": 1
+    },
+    "Pikachu_3s": {
+      "correct": 0,
+      "total": 1
+    },
+    "Pikachu_sprcial": {
+      "correct": 1,
+      "total": 1
+    },
+    "Quaxly": {
+      "correct": 1,
+      "total": 1
+    },
+    "Quaxwell": {
+      "correct": 1,
+      "total": 1
+    },
+    "Raboot": {
+      "correct": 1,
+      "total": 1
+    },
+    "Raichu": {
+      "correct": 1,
+      "total": 1
+    },
+    "Rhyperior": {
+      "correct": 1,
+      "total": 1
+    },
+    "Rillaboom": {
+      "correct": 1,
+      "total": 1
+    },
+    "Rillaboom_Star": {
+      "correct": 0,
+      "total": 1
+    },
+    "Scorbunny": {
+      "correct": 1,
+      "total": 1
+    },
+    "Slowbro": {
+      "correct": 1,
+      "total": 1
+    },
+    "Slowpoke": {
+      "correct": 1,
+      "total": 1
+    },
+    "Sneasel": {
+      "correct": 1,
+      "total": 1
+    },
+    "Snom": {
+      "correct": 0,
+      "total": 1
+    },
+    "Snorlax": {
+      "correct": 1,
+      "total": 1
+    },
+    "Sobbie": {
+      "correct": 1,
+      "total": 1
+    },
+    "Sprigatito": {
+      "correct": 1,
+      "total": 1
+    },
+    "Thwackey": {
+      "correct": 1,
+      "total": 1
+    },
+    "Turtonator": {
+      "correct": 1,
+      "total": 1
+    },
+    "Tyranitar": {
+      "correct": 1,
+      "total": 1
+    },
+    "Umbreon": {
+      "correct": 1,
+      "total": 1
+    },
+    "Vaporeon": {
+      "correct": 1,
+      "total": 1
+    },
+    "Venusaur": {
+      "correct": 1,
+      "total": 1
+    },
+    "Vikavolt": {
+      "correct": 1,
+      "total": 1
+    },
+    "Weavile": {
+      "correct": 1,
+      "total": 1
+    },
+    "Zacian": {
+      "correct": 1,
+      "total": 1
+    },
+    "Zamazenta": {
+      "correct": 1,
+      "total": 1
+    },
+    "sylveon": {
+      "correct": 1,
+      "total": 1
+    }
+  },
+  "note": "Validation duoc lay tu file audio GOC (khong qua augment) cho tung nhan vat, train tren cac file augment con lai, de tranh ro ri du lieu giua train/val. Voi cac nhan vat chi co dung 1 file audio that, tap validation van chi phan anh kha nang nhan dien 1 ban ghi duy nhat, chua the danh gia day du kha nang tong quat hoa sang giong noi/moi truong ghi am khac. Nen bo sung them audio that cho tung nhan vat."
 }
