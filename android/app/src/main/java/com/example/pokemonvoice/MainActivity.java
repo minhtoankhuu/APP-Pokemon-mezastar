@@ -30,7 +30,10 @@ import java.util.List;
 public class MainActivity extends Activity {
     private static final int SAMPLE_RATE = 16000;
     private static final int MAX_RECORD_SECONDS = 5;
-    private static final int INPUT_SAMPLES = SAMPLE_RATE * MAX_RECORD_SECONDS;
+    private static final int MAX_SAMPLES = SAMPLE_RATE * MAX_RECORD_SECONDS;
+    // Do dai co dinh dua vao model, phai khop voi --duration luc train (tools/train_audio_model.py).
+    private static final float MODEL_INPUT_SECONDS = 3.0f;
+    private static final int INPUT_SAMPLES = (int) (SAMPLE_RATE * MODEL_INPUT_SECONDS);
     private static final int REQUEST_RECORD_AUDIO = 10;
 
     private TextView resultText;
@@ -116,14 +119,14 @@ public class MainActivity extends Activity {
                 SAMPLE_RATE,
                 AudioFormat.CHANNEL_IN_MONO,
                 AudioFormat.ENCODING_PCM_16BIT,
-                Math.max(minBuffer, INPUT_SAMPLES * 2)
+                Math.max(minBuffer, MAX_SAMPLES * 2)
         );
-        short[] full = new short[INPUT_SAMPLES];
+        short[] full = new short[MAX_SAMPLES];
         short[] chunk = new short[1600];
         int offset = 0;
         recorder.startRecording();
-        while (offset < INPUT_SAMPLES && !stopRequested) {
-            int toRead = Math.min(chunk.length, INPUT_SAMPLES - offset);
+        while (offset < MAX_SAMPLES && !stopRequested) {
+            int toRead = Math.min(chunk.length, MAX_SAMPLES - offset);
             int read = recorder.read(chunk, 0, toRead);
             if (read > 0) {
                 System.arraycopy(chunk, 0, full, offset, read);
@@ -133,13 +136,45 @@ public class MainActivity extends Activity {
         recorder.stop();
         recorder.release();
 
-        int recordedSamples = offset;
+        return extractLoudestWindow(full, offset);
+    }
+
+    /**
+     * Nguoi dung co the ghi toi da MAX_RECORD_SECONDS, nhung model duoc train co dinh
+     * o MODEL_INPUT_SECONDS. Neu doan ghi duoc dai hon input model, tim cua so
+     * MODEL_INPUT_SECONDS co nang luong am thanh (RMS) lon nhat de tranh dua ca doan
+     * im lang vao model; neu ngan hon thi dem 0 cho du, giong luc train.
+     */
+    private float[] extractLoudestWindow(short[] full, int recordedSamples) {
+        int start = 0;
+        if (recordedSamples > INPUT_SAMPLES) {
+            long windowEnergy = 0;
+            for (int i = 0; i < INPUT_SAMPLES; i++) windowEnergy += (long) full[i] * full[i];
+
+            long bestEnergy = windowEnergy;
+            int bestStart = 0;
+            for (int s = 1; s <= recordedSamples - INPUT_SAMPLES; s++) {
+                int outIdx = s - 1;
+                int inIdx = s - 1 + INPUT_SAMPLES;
+                windowEnergy -= (long) full[outIdx] * full[outIdx];
+                windowEnergy += (long) full[inIdx] * full[inIdx];
+                if (windowEnergy > bestEnergy) {
+                    bestEnergy = windowEnergy;
+                    bestStart = s;
+                }
+            }
+            start = bestStart;
+        }
+
+        int usableSamples = Math.min(INPUT_SAMPLES, recordedSamples - start);
         float peak = 1f;
-        for (int i = 0; i < recordedSamples; i++) peak = Math.max(peak, Math.abs((float) full[i]));
+        for (int i = 0; i < usableSamples; i++) {
+            peak = Math.max(peak, Math.abs((float) full[start + i]));
+        }
 
         float[] floats = new float[INPUT_SAMPLES];
-        for (int i = 0; i < recordedSamples; i++) floats[i] = full[i] / peak;
-        // Phan con lai (tu recordedSamples den INPUT_SAMPLES) giu nguyen 0f, giong cach dem lang khi train.
+        for (int i = 0; i < usableSamples; i++) floats[i] = full[start + i] / peak;
+        // Phan con lai (neu doan ghi ngan hon INPUT_SAMPLES) giu nguyen 0f, giong luc train.
         return floats;
     }
 
