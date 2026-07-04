@@ -31,7 +31,7 @@ import java.util.List;
 
 public class MainActivity extends Activity {
     private static final int SAMPLE_RATE = 16000;
-    private static final int RECORD_SECONDS = 2;
+    private static final int RECORD_SECONDS = 4;
     private static final int INPUT_SAMPLES = SAMPLE_RATE * RECORD_SECONDS;
     private static final int REQUEST_RECORD_AUDIO = 10;
 
@@ -71,7 +71,7 @@ public class MainActivity extends Activity {
         imageView.setPadding(0, 32, 0, 32);
 
         listenButton = new Button(this);
-        listenButton.setText("Nghe 2 giây");
+        listenButton.setText("Nghe 4 giây");
         listenButton.setOnClickListener(v -> startListening());
 
         root.addView(resultText, new LinearLayout.LayoutParams(-1, -2));
