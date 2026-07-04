@@ -1,5 +1,8 @@
-﻿from pathlib import Path
+﻿import sys
+from pathlib import Path
 import shutil
+
+sys.stdout.reconfigure(encoding='utf-8')
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / 'data' / 'raw'
@@ -18,16 +21,20 @@ if not model_src.exists() or not labels_src.exists():
 shutil.copy2(model_src, ASSETS / 'model.tflite')
 shutil.copy2(labels_src, ASSETS / 'labels.txt')
 
+IMAGE_EXTS = ('.png', '.jpg', '.jpeg', '.webp')
+missing = []
+
 for folder in sorted(DATA.iterdir()):
     if not folder.is_dir():
         continue
-    image = None
-    for name in ('image.png', 'image.jpg', 'image.jpeg', 'image.webp'):
-        candidate = folder / name
-        if candidate.exists():
-            image = candidate
-            break
-    if image:
-        shutil.copy2(image, IMAGES / f'{folder.name}{image.suffix.lower()}')
+    candidates = [p for p in folder.iterdir() if p.suffix.lower() in IMAGE_EXTS]
+    if not candidates:
+        missing.append(folder.name)
+        continue
+    image = sorted(candidates)[0]
+    shutil.copy2(image, IMAGES / f'{folder.name}{image.suffix.lower()}')
+
+if missing:
+    print('Không tìm thấy ảnh cho:', ', '.join(missing))
 
 print('Đã đồng bộ assets Android.')

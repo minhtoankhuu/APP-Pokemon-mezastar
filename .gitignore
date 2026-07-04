@@ -8,3 +8,6 @@ android/app/build/
 android/local.properties
 android/.idea/
 *.iml
+
+# Sinh ra tu tools/sync_android_assets.py (model.tflite, labels.txt, images/)
+android/app/src/main/assets/
