@@ -154,8 +154,8 @@
   },
   "train_samples": 1022,
   "val_samples": 73,
-  "last_train_accuracy": 0.8405088186264038,
-  "last_val_accuracy": 0.8904109597206116,
+  "last_train_accuracy": 0.8424657583236694,
+  "last_val_accuracy": 0.8767123222351074,
   "per_class_val": {
     "Arcanine": {
       "correct": 1,
@@ -174,7 +174,7 @@
       "total": 1
     },
     "Cinderace_4s": {
-      "correct": 1,
+      "correct": 0,
       "total": 1
     },
     "Cinderace_5s": {
@@ -202,7 +202,7 @@
       "total": 1
     },
     "Drizzile": {
-      "correct": 0,
+      "correct": 1,
       "total": 1
     },
     "Eevee": {
@@ -366,11 +366,11 @@
       "total": 1
     },
     "Rillaboom": {
-      "correct": 1,
+      "correct": 0,
       "total": 1
     },
     "Rillaboom_Star": {
-      "correct": 0,
+      "correct": 1,
       "total": 1
     },
     "Scorbunny": {
@@ -390,7 +390,7 @@
       "total": 1
     },
     "Snom": {
-      "correct": 0,
+      "correct": 1,
       "total": 1
     },
     "Snorlax": {
