@@ -1,4 +1,4 @@
-﻿package com.example.pokemonvoice;
+package com.example.pokemonvoice;
 
 import android.Manifest;
 import android.app.Activity;
