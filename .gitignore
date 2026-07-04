@@ -8,7 +8,3 @@ android/app/build/
 android/local.properties
 android/.idea/
 *.iml
-
-# Trained model outputs (regenerate via tools/train_audio_model.py)
-models/*.tflite
-models/training_report.json
