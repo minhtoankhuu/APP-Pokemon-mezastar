@@ -22,8 +22,6 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 import java.util.ArrayList;
@@ -31,8 +29,8 @@ import java.util.List;
 
 public class MainActivity extends Activity {
     private static final int SAMPLE_RATE = 16000;
-    private static final int RECORD_SECONDS = 3;
-    private static final int INPUT_SAMPLES = SAMPLE_RATE * RECORD_SECONDS;
+    private static final int MAX_RECORD_SECONDS = 5;
+    private static final int INPUT_SAMPLES = SAMPLE_RATE * MAX_RECORD_SECONDS;
     private static final int REQUEST_RECORD_AUDIO = 10;
 
     private TextView resultText;
@@ -40,6 +38,9 @@ public class MainActivity extends Activity {
     private Button listenButton;
     private Interpreter interpreter;
     private final List<String> labels = new ArrayList<>();
+
+    private volatile boolean isRecording = false;
+    private volatile boolean stopRequested = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,8 +72,8 @@ public class MainActivity extends Activity {
         imageView.setPadding(0, 32, 0, 32);
 
         listenButton = new Button(this);
-        listenButton.setText("Nghe 3 giây");
-        listenButton.setOnClickListener(v -> startListening());
+        listenButton.setText("Bắt đầu nghe");
+        listenButton.setOnClickListener(v -> onListenButtonClicked());
 
         root.addView(resultText, new LinearLayout.LayoutParams(-1, -2));
         root.addView(imageView, new LinearLayout.LayoutParams(-1, 0, 1));
@@ -80,7 +81,11 @@ public class MainActivity extends Activity {
         setContentView(root);
     }
 
-    private void startListening() {
+    private void onListenButtonClicked() {
+        if (isRecording) {
+            stopRequested = true;
+            return;
+        }
         if (checkSelfPermission(Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.RECORD_AUDIO}, REQUEST_RECORD_AUDIO);
             return;
@@ -89,8 +94,10 @@ public class MainActivity extends Activity {
             resultText.setText("Bạn cần train và chép model vào assets trước.");
             return;
         }
-        listenButton.setEnabled(false);
-        resultText.setText("Đang nghe...");
+        isRecording = true;
+        stopRequested = false;
+        listenButton.setText("Dừng lại");
+        resultText.setText("Đang nghe... bấm \"Dừng lại\" khi xong (tối đa " + MAX_RECORD_SECONDS + "s)");
         new Thread(() -> {
             float[] audio = recordAudio();
             Prediction prediction = predict(audio);
@@ -111,20 +118,28 @@ public class MainActivity extends Activity {
                 AudioFormat.ENCODING_PCM_16BIT,
                 Math.max(minBuffer, INPUT_SAMPLES * 2)
         );
-        short[] buffer = new short[INPUT_SAMPLES];
+        short[] full = new short[INPUT_SAMPLES];
+        short[] chunk = new short[1600];
         int offset = 0;
         recorder.startRecording();
-        while (offset < INPUT_SAMPLES) {
-            int read = recorder.read(buffer, offset, INPUT_SAMPLES - offset);
-            if (read > 0) offset += read;
+        while (offset < INPUT_SAMPLES && !stopRequested) {
+            int toRead = Math.min(chunk.length, INPUT_SAMPLES - offset);
+            int read = recorder.read(chunk, 0, toRead);
+            if (read > 0) {
+                System.arraycopy(chunk, 0, full, offset, read);
+                offset += read;
+            }
         }
         recorder.stop();
         recorder.release();
 
-        float[] floats = new float[INPUT_SAMPLES];
+        int recordedSamples = offset;
         float peak = 1f;
-        for (short s : buffer) peak = Math.max(peak, Math.abs((float) s));
-        for (int i = 0; i < buffer.length; i++) floats[i] = buffer[i] / peak;
+        for (int i = 0; i < recordedSamples; i++) peak = Math.max(peak, Math.abs((float) full[i]));
+
+        float[] floats = new float[INPUT_SAMPLES];
+        for (int i = 0; i < recordedSamples; i++) floats[i] = full[i] / peak;
+        // Phan con lai (tu recordedSamples den INPUT_SAMPLES) giu nguyen 0f, giong cach dem lang khi train.
         return floats;
     }
 
@@ -142,7 +157,8 @@ public class MainActivity extends Activity {
     }
 
     private void showPrediction(Prediction prediction) {
-        listenButton.setEnabled(true);
+        isRecording = false;
+        listenButton.setText("Bắt đầu nghe");
         resultText.setText(prediction.label + " - " + Math.round(prediction.confidence * 100) + "%");
         try {
             InputStream stream = openImageAsset(prediction.label);
