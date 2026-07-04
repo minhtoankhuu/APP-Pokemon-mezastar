@@ -1,7 +1,7 @@
 {
   "sample_rate": 16000,
-  "duration_seconds": 2.0,
-  "input_samples": 32000,
+  "duration_seconds": 3.0,
+  "input_samples": 48000,
   "labels": [
     "Arcanine",
     "Blastoise",
@@ -154,8 +154,8 @@
   },
   "train_samples": 1022,
   "val_samples": 73,
-  "last_train_accuracy": 0.8424657583236694,
-  "last_val_accuracy": 0.8767123222351074,
+  "last_train_accuracy": 0.7945205569267273,
+  "last_val_accuracy": 0.7945205569267273,
   "per_class_val": {
     "Arcanine": {
       "correct": 1,
@@ -174,11 +174,11 @@
       "total": 1
     },
     "Cinderace_4s": {
-      "correct": 0,
+      "correct": 1,
       "total": 1
     },
     "Cinderace_5s": {
-      "correct": 1,
+      "correct": 0,
       "total": 1
     },
     "Cramorant": {
@@ -202,7 +202,7 @@
       "total": 1
     },
     "Drizzile": {
-      "correct": 1,
+      "correct": 0,
       "total": 1
     },
     "Eevee": {
@@ -222,7 +222,7 @@
       "total": 1
     },
     "Floragato": {
-      "correct": 1,
+      "correct": 0,
       "total": 1
     },
     "Flygon": {
@@ -322,11 +322,11 @@
       "total": 1
     },
     "Obstagoon_4s": {
-      "correct": 1,
+      "correct": 0,
       "total": 1
     },
     "Obstagoon_5s": {
-      "correct": 0,
+      "correct": 1,
       "total": 1
     },
     "Pidgeot": {
@@ -334,7 +334,7 @@
       "total": 1
     },
     "Pikachu-Star": {
-      "correct": 0,
+      "correct": 1,
       "total": 1
     },
     "Pikachu_3s": {
@@ -342,7 +342,7 @@
       "total": 1
     },
     "Pikachu_sprcial": {
-      "correct": 1,
+      "correct": 0,
       "total": 1
     },
     "Quaxly": {
@@ -366,11 +366,11 @@
       "total": 1
     },
     "Rillaboom": {
-      "correct": 0,
+      "correct": 1,
       "total": 1
     },
     "Rillaboom_Star": {
-      "correct": 1,
+      "correct": 0,
       "total": 1
     },
     "Scorbunny": {
