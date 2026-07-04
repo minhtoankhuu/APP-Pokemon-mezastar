@@ -1,7 +1,7 @@
 {
   "sample_rate": 16000,
-  "duration_seconds": 3.0,
-  "input_samples": 48000,
+  "duration_seconds": 5.0,
+  "input_samples": 80000,
   "labels": [
     "Arcanine",
     "Blastoise",
@@ -154,31 +154,31 @@
   },
   "train_samples": 1022,
   "val_samples": 73,
-  "last_train_accuracy": 0.7945205569267273,
-  "last_val_accuracy": 0.7945205569267273,
+  "last_train_accuracy": 0.5949119329452515,
+  "last_val_accuracy": 0.3561643958091736,
   "per_class_val": {
     "Arcanine": {
       "correct": 1,
       "total": 1
     },
     "Blastoise": {
-      "correct": 1,
+      "correct": 0,
       "total": 1
     },
     "Charizard": {
-      "correct": 1,
+      "correct": 0,
       "total": 1
     },
     "Charjabug": {
-      "correct": 1,
+      "correct": 0,
       "total": 1
     },
     "Cinderace_4s": {
-      "correct": 1,
+      "correct": 0,
       "total": 1
     },
     "Cinderace_5s": {
-      "correct": 0,
+      "correct": 1,
       "total": 1
     },
     "Cramorant": {
@@ -186,11 +186,11 @@
       "total": 1
     },
     "Crocalor": {
-      "correct": 1,
+      "correct": 0,
       "total": 1
     },
     "Dedenne": {
-      "correct": 1,
+      "correct": 0,
       "total": 1
     },
     "Dodrio": {
@@ -214,11 +214,11 @@
       "total": 1
     },
     "Espeon": {
-      "correct": 1,
+      "correct": 0,
       "total": 1
     },
     "Flareon": {
-      "correct": 1,
+      "correct": 0,
       "total": 1
     },
     "Floragato": {
@@ -234,7 +234,7 @@
       "total": 1
     },
     "Fuecoco": {
-      "correct": 1,
+      "correct": 0,
       "total": 1
     },
     "Galarian Linoone": {
@@ -242,7 +242,7 @@
       "total": 1
     },
     "Galarian Zigzagoon": {
-      "correct": 1,
+      "correct": 0,
       "total": 1
     },
     "Gengar": {
@@ -258,7 +258,7 @@
       "total": 1
     },
     "Golurk": {
-      "correct": 1,
+      "correct": 0,
       "total": 1
     },
     "Gossifleur": {
@@ -274,11 +274,11 @@
       "total": 1
     },
     "Inteleon_4s": {
-      "correct": 1,
+      "correct": 0,
       "total": 1
     },
     "Inteleon_5s": {
-      "correct": 0,
+      "correct": 1,
       "total": 1
     },
     "Jolteon": {
@@ -286,7 +286,7 @@
       "total": 1
     },
     "Keldeo": {
-      "correct": 1,
+      "correct": 0,
       "total": 1
     },
     "Leafeon": {
@@ -294,7 +294,7 @@
       "total": 1
     },
     "Lucario": {
-      "correct": 1,
+      "correct": 0,
       "total": 1
     },
     "Metagross": {
@@ -322,11 +322,11 @@
       "total": 1
     },
     "Obstagoon_4s": {
-      "correct": 0,
+      "correct": 1,
       "total": 1
     },
     "Obstagoon_5s": {
-      "correct": 1,
+      "correct": 0,
       "total": 1
     },
     "Pidgeot": {
@@ -346,11 +346,11 @@
       "total": 1
     },
     "Quaxly": {
-      "correct": 1,
+      "correct": 0,
       "total": 1
     },
     "Quaxwell": {
-      "correct": 1,
+      "correct": 0,
       "total": 1
     },
     "Raboot": {
@@ -358,7 +358,7 @@
       "total": 1
     },
     "Raichu": {
-      "correct": 1,
+      "correct": 0,
       "total": 1
     },
     "Rhyperior": {
@@ -366,7 +366,7 @@
       "total": 1
     },
     "Rillaboom": {
-      "correct": 1,
+      "correct": 0,
       "total": 1
     },
     "Rillaboom_Star": {
@@ -374,23 +374,23 @@
       "total": 1
     },
     "Scorbunny": {
-      "correct": 1,
+      "correct": 0,
       "total": 1
     },
     "Slowbro": {
-      "correct": 1,
+      "correct": 0,
       "total": 1
     },
     "Slowpoke": {
-      "correct": 1,
+      "correct": 0,
       "total": 1
     },
     "Sneasel": {
-      "correct": 1,
+      "correct": 0,
       "total": 1
     },
     "Snom": {
-      "correct": 1,
+      "correct": 0,
       "total": 1
     },
     "Snorlax": {
@@ -398,11 +398,11 @@
       "total": 1
     },
     "Sobbie": {
-      "correct": 1,
+      "correct": 0,
       "total": 1
     },
     "Sprigatito": {
-      "correct": 1,
+      "correct": 0,
       "total": 1
     },
     "Thwackey": {
@@ -434,7 +434,7 @@
       "total": 1
     },
     "Weavile": {
-      "correct": 1,
+      "correct": 0,
       "total": 1
     },
     "Zacian": {
@@ -446,7 +446,7 @@
       "total": 1
     },
     "sylveon": {
-      "correct": 1,
+      "correct": 0,
       "total": 1
     }
   },
